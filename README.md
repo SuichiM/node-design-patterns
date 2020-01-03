@@ -28,6 +28,4 @@ Resources to learn about Design Patterns:
 
 ---
 
-Developed by [Adonis Murati](https://github.com/adoi).
-
-Found any bug/grammar mistake? Feel free to fork the repo, make the changes and do a PR.    
+Forked From: [Adonis Murati](https://github.com/adoi/node-design-patterns).
