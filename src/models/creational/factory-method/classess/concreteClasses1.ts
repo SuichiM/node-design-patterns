@@ -1,12 +1,12 @@
 
-import {Creator} from './creator.js.js';
-import {ConcreteProduct1} from './concreteProduct1.js.js';
+import {Creator}        from './creator';
+import ConcreteProduct1 from './concreteProduct1';
 
 /**
  * Concrete Creators override the factory method in order to change the
  * resulting product's type.
  */
-export class ConcreteCreator1 extends Creator {
+export default class ConcreteCreator1 extends Creator {
 
     /**
      * Note that the signature of the method still uses the abstract product
