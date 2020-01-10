@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 const app = express();
 
@@ -7,7 +7,7 @@ const port = process.env.PORT || 8888;
 app.get('/', (req, res) => {
   res.status(200).send({
     success: 'true',
-    message: 'Seja Bem-Vindo(a) ao mundo Docker!',
+    message: 'Sea Bienvenido al mundo',
     version: '1.0.0',
   });
 });

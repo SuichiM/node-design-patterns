@@ -1,31 +1,36 @@
 {
-    "name": "design_patterns_repo",
-    "version": "1.0.0",
-    "main": "app.js",
-    "scripts": {
-      "dev": "nodemon",
-      "lint": "eslint --ext .js,.html -f ./node_modules/eslint-friendly-formatter . --fix",
-      "prepush": "npm run lint",
-      "start": "node app.js"
-    },
-    "keywords": [
-      "nodejs",
-      "javascript",
-      "docker",
-      "express"
-    ],
-    "author": "SuichiM",
-    "license": "MIT",
-    "devDependencies": {
-      "eslint": "^5.16.0",
-      "eslint-config-airbnb-base": "^13.1.0",
-      "eslint-plugin-import": "^2.17.3",
-      "husky": "^2.3.0",
-      "nodemon": "^1.19.1"
-    },
-    "dependencies": {
-      "eslint-friendly-formatter": "^4.0.1",
-      "eslint-plugin-html": "^5.0.5",
-      "express": "^4.17.1"
-    }
+  "name": "design_patterns_repo",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --es-module-specifier-resolution=node app.js",
+    "test": "mocha dist/**/*.spec.js",
+    "lint": "eslint src --ext js",
+    "tsc": "tsc"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "docker",
+    "express"
+  ],
+  "author": "SuichiM",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "7.0.22",
+    "express": "4.15.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "2.2.41",
+    "es6-interface": "^3.0.9",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.19.0",
+    "eslint-plugin-promise": "3.5.0",
+    "mocha": "3.4.2",
+    "nodemon": "^1.19.0",
+    "supertest": "3.0.0"
   }
+}

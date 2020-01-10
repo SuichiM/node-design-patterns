@@ -1,12 +1,12 @@
-import {Creator} from './classess/creator';
-import {ConcreteCreator1, ConcreteCreator2} from './classess/concreteClasses';
+import  {ConcreteCreator1} from './classess/concreteClasses1.js';
+import  {ConcreteCreator2} from './classess/concreteClasses2.js';
 
 /**
  * The client code works with an instance of a concrete creator, albeit through
  * its base interface. As long as the client keeps working with the creator via
  * the base interface, you can pass it any creator's subclass.
  */
-function clientCode(creator: Creator) {
+function clientCode(creator) {
     // ...
     console.log('Client: I\'m not aware of the creator\'s class, but it still works.');
     console.log(creator.someOperation());

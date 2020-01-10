@@ -1,14 +1,15 @@
+
 /**
  * The Creator class declares the factory method that is supposed to return an
  * object of a Product class. The Creator's subclasses usually provide the
  * implementation of this method.
  */
-export abstract class Creator {
+export class Creator {
     /**
      * Note that the Creator may also provide some default implementation of the
      * factory method.
      */
-    public abstract factoryMethod(): Product;
+    factoryMethod(){ console.log('default behavior')}
 
     /**
      * Also note that, despite its name, the Creator's primary responsibility is
@@ -17,10 +18,11 @@ export abstract class Creator {
      * indirectly change that business logic by overriding the factory method
      * and returning a different type of product from it.
      */
-    public someOperation(): string {
+     someOperation() {
         // Call the factory method to create a Product object.
         const product = this.factoryMethod();
         // Now, use the product.
         return `Creator: The same creator's code has just worked with ${product.operation()}`;
     }
 }
+
