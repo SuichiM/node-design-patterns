@@ -1,6 +1,6 @@
 // const Interface = require('es6-interface');
 import Interface from 'es6-interface';
-import IProduct from './Iproduct.js'
+import IProduct from './Iproduct.js.js'
 
 /**
  * Concrete Products provide various implementations of the Product interface.

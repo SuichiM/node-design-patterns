@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "dist",
-    "sourceMap": true
+      "sourceMap": true,
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "baseUrl": "./src"
   },
-  "files": [
-    "./node_modules/@types/mocha/index.d.ts",
-    "./node_modules/@types/node/index.d.ts"
-  ],
   "include": [
-    "src/**/*.ts", "src/index.js", "src/creational/factory-method/index.js", "src/creational/factory-method/classess/creator.js", "src/creational/factory-method/classess/concreteClasses1.js", "src/creational/factory-method/classess/Iproduct.js"
+      "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+      "node_modules"
   ]
 }

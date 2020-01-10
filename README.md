@@ -13,6 +13,7 @@ The following have been implemented in this repo:
 
 | Creational    | Structural    | Behavioral  |
 | ------------- |:-------------:| :-----:     |
+| Factory-method|               |             |
 | Factory       | Proxy         | Observer    |
 | Singleton     | Adapter       | Strategy    |
 | Builder       | Decorator     | Iterator    |

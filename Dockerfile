@@ -1,5 +1,5 @@
 # specify the node base image with your desired version node:<version>
-FROM node:13
+FROM node:lts
 
 # replace this with your application's default port
 ENV PORT 8888
@@ -8,12 +8,13 @@ EXPOSE 8888
 
 WORKDIR /home/node/app
 
+RUN npm install --save -g typescript
+RUN npm install --save -g ts-node
+
 COPY package.json package.json
 RUN npm install
 
 COPY . .
-
-# RUN npm install --save -g typescript
 
 # RUN npm update --save-dev @types/node
 
