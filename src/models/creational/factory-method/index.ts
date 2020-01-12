@@ -1,5 +1,5 @@
-import ConcreteCreator1 from './classess/concreteClasses1';
-import  {ConcreteCreator2} from './classess/concreteClasses2.js';
+import ConcreteCreator1 from './concreteClass1';
+import  {ConcreteCreator2} from './concreteClass2.js';
 
 /**
  * The client code works with an instance of a concrete creator, albeit through

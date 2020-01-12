@@ -15,6 +15,7 @@ export default class ConcreteCreator1 extends Creator {
      * classes.
      */
     factoryMethod() {
+        console.log('Concrete Creator 1 is creating the specific Product1');
         return new ConcreteProduct1();
     }
 }

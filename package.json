@@ -4,11 +4,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "dev-1": "nodemon --es-module-specifier-resolution=node app.js",
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'node_modules' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts",
     "test": "mocha dist/**/*.spec.js",
     "lint": "eslint src --ext js",
-    "dev2": "ts-node src/server.ts",
     "start": "ts-node dist/server.js",
     "build": "tsc -p src/server.ts"
   },

@@ -37,7 +37,11 @@ class App {
     }
 
     public listen() {
-        
+
+        this.app.listen(this.port, () => {
+            console.log(`App listening on the http://localhost:${this.port}`)
+        });
+
         this.app.get('/', (req, res) => {
             res.status(200).send({
                 success: 'true',
@@ -47,10 +51,6 @@ class App {
                 version: '1.0.0',
             });
         });
-
-        this.app.listen(this.port, () => {
-            console.log(`App listening on the http://localhost:${this.port}`)
-        })
     }
 }
 

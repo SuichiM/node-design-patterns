@@ -7,9 +7,12 @@ import IProduct from './Iproduct';
  * implementation of this method.
  */
 export abstract class Creator {
+    
     /**
      * Note that the Creator may also provide some default implementation of the
      * factory method.
+     * An Important thing is that the return type of the method should be the Interface
+     * of the Product
      */
     public abstract factoryMethod(): IProduct;
 
@@ -23,8 +26,10 @@ export abstract class Creator {
      someOperation() {
         // Call the factory method to create a Product object.
         const product = this.factoryMethod();
+        
         // Now, use the product.
-        //return `Creator: The same creator's code has just worked with ${product.operation()}`;
+        return `This Creator method is defined only on the parent class, avoiding repeat code <br>
+                Creator: The same creator's code has just worked with ${product.operation()} without crashing` ;
     }
 }
 
