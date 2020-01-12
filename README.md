@@ -1,6 +1,6 @@
 ## Design Patterns with NodeJS + TS
 
-In this repository I am going to implement some of the most important GoF design patterns. following the greaaaat book, site and examples of [Alexander Shvets](https://refactoring.guru/) forked the repository of: [Adonis Murati](https://github.com/adoi/node-design-patterns).  
+In this repository I am going to implement some of the most important GoF design patterns. following the greaaaat book, site and examples of [Alexander Shvets](https://refactoring.guru/) and using as initial repository a forked copy of: [Adonis Murati](https://github.com/adoi/node-design-patterns).  
 
 ---
 > A design pattern is a reusable solution to a recurring problem.
