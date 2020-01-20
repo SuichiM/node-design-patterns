@@ -10,6 +10,7 @@ WORKDIR /home/node/app
 
 RUN npm install --save -g typescript
 RUN npm install --save -g ts-node
+RUN npm install -g @vue/cli
 
 COPY package.json package.json
 RUN npm install

@@ -46,7 +46,7 @@ class App {
             res.status(200).send({
                 success: 'true',
                 message: {
-                    'factory-method': 'http://localhost:8888/factory-method'
+                    'factory-method': 'http://localhost:8888/factory-method-generic'
                 },
                 version: '1.0.0',
             });

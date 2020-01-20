@@ -2,10 +2,6 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import IControllerBase from './IControllerBase';
 
-import {initPattern} from '../models/creational/factory-method';
-
-
-import concreteConstructor1 from '../models/creational/factory-method/concreteCreator1';
 import ConcreteCreator1 from '../models/creational/factory-method/concreteCreator1';
 import ConcreteCreator2 from '../models/creational/factory-method/concreteCreator2';
 
@@ -23,6 +19,7 @@ export default class FactoryMethodGenericController implements IControllerBase {
 
     index = (req: Request, res: Response) => {
         var content ;
+
         var construct ;
         
         switch (req.query.type) {
@@ -37,8 +34,8 @@ export default class FactoryMethodGenericController implements IControllerBase {
         }
         
         if(construct)
-           content = construct.someOperation();
-    
+            content = construct.someOperation();    
+        
         res.send(content);
     }
 
