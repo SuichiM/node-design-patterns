@@ -1,6 +1,6 @@
 <template>
-  <div class="hello container-fluid">
-    <h1>{{ msg }}</h1>
+  <div class="">
+    <h1>Welcome to the Design Pattern Repository</h1>
     <p>
       In this repository there are implemented some of the most important GoF design patterns. 
       following the greaaaat book, site and examples of <a href="https://refactoring.guru/"> Alexander Shvets </a> and using as initial repository a forked copy of: <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
@@ -10,7 +10,7 @@
       <p class="mb-0">A design pattern is a reusable solution to a recurring problem.</p>
       <footer class="blockquote-footer">
         <cite>
-          <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
+          <a href="https://github.com/adoi/node-design-patterns#design-patterns-with-nodejs">Adonis Murati.</a>
         </cite>
       </footer>
     </blockquote>
@@ -19,38 +19,51 @@
       When talking about design patterns we usually refer to the 'classical' ones which include Creational, Structural and Behavioral design patterns.
       The following have been implemented in this repo:
    </p>
-
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Creational</th> <th scope="col">Structural</th> <th scope="col">Behavioral</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Factory-method</td> <td>Proxy</td> <td>Observer</td>
-        </tr>
-        <tr>
-          <td>Factory</td> <td>Adapter</td> <td>Strategy</td>
-        </tr>
-        <tr>
-          <td>Singleton</td> <td>Decorator</td> <td>Iterator</td>
-        </tr>
-        <tr>
-          <td>Prototype</td> <td></td> <td></td>
-        </tr>
-        
-      </tbody>
-    </table>
+    <div class="container">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Creational</th> 
+            <th scope="col">Structural</th> 
+            <th scope="col">Behavioral</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <router-link to="/factory-method">
+                Factory Method
+              </router-link>
+            </td> 
+              <td>Proxy</td> 
+              <td>Observer</td>
+          </tr>
+          <tr>
+            <td>Factory</td> 
+            <td>Adapter</td> 
+            <td>Strategy</td>
+          </tr>
+          <tr>
+            <td>Singleton</td> 
+            <td>Decorator</td> 
+            <td>Iterator</td>
+          </tr>
+          <tr>
+            <td>Prototype</td> 
+            <td></td> 
+            <td></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'Home',
+  props: {}
 }
 </script>
 

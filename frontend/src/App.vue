@@ -1,27 +1,28 @@
 <template>
-  <div id="app">
-    <HelloWorld msg="Welcome to the Design Pattern Repository "/>
+<div>
+  <Navbar></Navbar>
+  <div id="app" class="container-fluid">    
+      <router-view></router-view>    
   </div>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import NavBar from './components/Navbar'
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components:{
+    'Navbar' : NavBar
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+/*   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #2c3e50; */
 }
 </style>
