@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/pattern.png">
     <HelloWorld msg="Welcome to the Design Pattern Repository "/>
   </div>
 </template>

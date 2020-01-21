@@ -1,32 +1,47 @@
 <template>
-  <div class="hello">
+  <div class="hello container-fluid">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+      In this repository there are implemented some of the most important GoF design patterns. 
+      following the greaaaat book, site and examples of <a href="https://refactoring.guru/"> Alexander Shvets </a> and using as initial repository a forked copy of: <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+      
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">A design pattern is a reusable solution to a recurring problem.</p>
+      <footer class="blockquote-footer">
+        <cite>
+          <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
+        </cite>
+      </footer>
+    </blockquote>
+     
+    <p>
+      When talking about design patterns we usually refer to the 'classical' ones which include Creational, Structural and Behavioral design patterns.
+      The following have been implemented in this repo:
+   </p>
+
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Creational</th> <th scope="col">Structural</th> <th scope="col">Behavioral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Factory-method</td> <td>Proxy</td> <td>Observer</td>
+        </tr>
+        <tr>
+          <td>Factory</td> <td>Adapter</td> <td>Strategy</td>
+        </tr>
+        <tr>
+          <td>Singleton</td> <td>Decorator</td> <td>Iterator</td>
+        </tr>
+        <tr>
+          <td>Prototype</td> <td></td> <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
   </div>
 </template>
 
