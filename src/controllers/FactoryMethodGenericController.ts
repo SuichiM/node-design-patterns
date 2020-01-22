@@ -2,8 +2,10 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import IControllerBase from './IControllerBase';
 
-import ConcreteCreator1 from '../models/creational/factory-method/concreteCreator1';
-import ConcreteCreator2 from '../models/creational/factory-method/concreteCreator2';
+/**
+ * here imports a list of all the concrete creators 
+ */
+import ConcretesCreators from '../models/creational/factory-method';
 
 export default class FactoryMethodGenericController implements IControllerBase {
     public path = '/factory-method-generic'
@@ -18,25 +20,19 @@ export default class FactoryMethodGenericController implements IControllerBase {
     }
 
     index = (req: Request, res: Response) => {
-        var content ;
+        var content:any = {} ;
 
-        var construct ;
+        var creatorSelected = ConcretesCreators[req.query.type];
         
-        switch (req.query.type) {
-            case 'con1':
-                construct = new ConcreteCreator1;
-                break;
-            case 'con2':
-                construct = new ConcreteCreator2;
-                break;
-            default:
-                break;
+        if(creatorSelected){
+            content.concreteCreator  = creatorSelected.getName();
+            content.productGenerated = creatorSelected.factoryMethod().getName();
+            content.description      = creatorSelected.someOperation(); 
+            res.send(content);   
+        }else{
+            res.status(500).send("Concrete Creator Non Supported");
         }
         
-        if(construct)
-            content = construct.someOperation();    
-        
-        res.send(content);
     }
 
 

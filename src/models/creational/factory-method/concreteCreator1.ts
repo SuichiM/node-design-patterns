@@ -7,7 +7,15 @@ import ConcreteProduct1 from './concreteProduct1';
  * resulting product's type.
  */
 export default class ConcreteCreator1 extends Creator {
-
+    
+    /**
+     *
+     */
+    constructor() {
+        super();
+        this.name = 'Concrete Creator A';
+    }
+    
     /**
      * Note that the signature of the method still uses the abstract product
      * type, even though the concrete product is actually returned from the
@@ -15,7 +23,7 @@ export default class ConcreteCreator1 extends Creator {
      * classes.
      */
     factoryMethod() {
-        console.log('Concrete Creator 1 is creating the specific Product1');
+        console.log('Concrete Creator A is creating the specific ProductA');
         return new ConcreteProduct1();
     }
 }

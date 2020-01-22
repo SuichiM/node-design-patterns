@@ -8,11 +8,21 @@ class App {
     constructor(appInit: { port: number; middleWares: any; controllers: any; }) {
         this.app = express()
         this.port = appInit.port
+        
+        this.app.use(function(req, res, next) {
+            console.log('allowing CORS');
+            res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
 
         this.middlewares(appInit.middleWares)
         this.routes(appInit.controllers)
         this.assets()
         this.template()
+
+        
+          
     }
 
     private middlewares(middleWares: { forEach: (arg0: (middleWare: any) => void) => void; }) {

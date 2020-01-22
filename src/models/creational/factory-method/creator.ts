@@ -7,7 +7,8 @@ import IProduct from './Iproduct';
  * implementation of this method.
  */
 export abstract class Creator {
-    
+    protected name:String;
+
     /**
      * Note that the Creator may also provide some default implementation of the
      * factory method.
@@ -16,6 +17,9 @@ export abstract class Creator {
      */
     public abstract factoryMethod(): IProduct;
 
+    getName(){
+        return this.name;
+    }
     /**
      * Also note that, despite its name, the Creator's primary responsibility is
      * not creating products. Usually, it contains some core business logic that
@@ -28,8 +32,9 @@ export abstract class Creator {
         const product = this.factoryMethod();
         
         // Now, use the product.
-        return `This Creator method is defined only on the parent class, avoiding repeat code <br>
-                Creator: The same creator's code has just worked with ${product.operation()} without crashing` ;
+        return `This Creator method is defined only on the parent class, avoiding repeat code 
+                The same creator's code has just worked with any instance of the Product without crashing
+                Here the concrete product is: ${product.getName()}` ;
     }
 }
 
