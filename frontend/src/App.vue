@@ -1,28 +1,42 @@
 <template>
-<div>
-  <Navbar></Navbar>
-  <div id="app" class="container-fluid">    
-      <router-view></router-view>    
-  </div>
-</div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="DPR"
+          class="shrink mr-2"
+          contain
+          src="@/assets/pattern.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <span class="shrink mt-1 hidden-sm-and-down h2"> 
+          <a href="https://github.com/SuichiM" class="text-white"> SuichiM </a> 
+        </span>
+      </div>
+
+      <v-spacer></v-spacer>
+
+    </v-app-bar>
+
+    <v-content class="container">
+      <router-view/>
+    </v-content>
+</v-app>
 </template>
 
 <script>
-import NavBar from './components/Navbar'
-export default {
-  name: 'app',
-  components:{
-    'Navbar' : NavBar
-  }
-}
-</script>
 
-<style>
-#app {
-/*   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50; */
-}
-</style>
+export default {
+  name: 'App',
+
+  data: () => ({
+    //
+  }),
+};
+</script>

@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h1>Welcome to the Design Pattern Repository</h1>
+    <h1><a href="https://github.com/SuichiM/node-design-patterns">Welcome to the Design Pattern Repository</a></h1>
     <p>
       In this repository there are implemented some of the most important GoF design patterns. 
       following the greaaaat book, site and examples of <a href="https://refactoring.guru/"> Alexander Shvets </a> and using as initial repository a forked copy of: <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
@@ -32,7 +32,7 @@
           <tr>
             <td>
               <router-link to="/factory-method">
-                Factory Method
+                <v-btn text small color="primary">Factory Method <v-icon color="blue">mdi-chevron-right</v-icon></v-btn>       
               </router-link>
             </td> 
               <td>Proxy</td> 
