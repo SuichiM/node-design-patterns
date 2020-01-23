@@ -16,23 +16,33 @@ export default class FactoryMethodGenericController implements IControllerBase {
     }
 
     public initRoutes() {
-        this.router.get(this.path, this.index)
+        this.router.get(this.path, this.index);
+        this.router.get(`${this.path}/:creator`, this.getCreator);
     }
 
     index = (req: Request, res: Response) => {
-        var content:any = {} ;
+        let creatorsList = Object
+            .keys(ConcretesCreators)
+            .map((k) => { return { id: k, description: ConcretesCreators[k]['name'] } })
+            .reduce((prev, el) => [...prev, el], [])
 
-        var creatorSelected = ConcretesCreators[req.query.type];
-        
-        if(creatorSelected){
-            content.concreteCreator  = creatorSelected.getName();
+        res.send(creatorsList);
+    }
+
+    getCreator = (req: Request, res: Response) => {
+        var content: any = {};
+
+        var creatorSelected = ConcretesCreators[req.params.creator];
+
+        if (creatorSelected) {
+            setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
+            content.concreteCreator = creatorSelected.getName();
             content.productGenerated = creatorSelected.factoryMethod().getName();
-            content.description      = creatorSelected.someOperation(); 
-            res.send(content);   
-        }else{
+            content.description = creatorSelected.someOperation();
+
+        } else {
             res.status(500).send("Concrete Creator Non Supported");
         }
-        
     }
 
 
