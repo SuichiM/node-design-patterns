@@ -1,43 +1,59 @@
 <template>
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+     <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+      <router-link to="/">
+        <v-img
+          alt="DPR"
+          class="shrink mr-2"
+          contain
+          src="@/assets/pattern.png"
+          transition="scale-transition"
+          width="40"
+          title="Home"
+        />
+        </router-link>
+        
+        <span class="shrink mt-auto hidden-sm-and-down small"> 
+          by: <a href="https://github.com/SuichiM" class="text-white"> SuichiM </a> 
+        </span>
+      </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    </nav>
+      <v-spacer></v-spacer>
+      <v-menu>
+      <template v-slot:activator="{ on: menu }">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on: tooltip }">
+            <v-btn
+              color="primary"
+              dark
+              v-on="{ ...tooltip, ...menu }"
+            >Creational</v-btn>
+          </template>
+          <span>Creationals Patterns</span>
+        </v-tooltip>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
 
-
+    </v-app-bar>
 </template>
-
+<script>
 export default {
-
+    data(){
+        return {
+               items:[{title: 'title1'}, {title:'title2'}]
+        }
+    }
 }
+</script>

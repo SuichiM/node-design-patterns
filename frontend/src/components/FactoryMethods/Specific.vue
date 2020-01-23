@@ -1,6 +1,6 @@
 <template>
   <my-container :feedback="feedback" :items="items" @changeOption="handleChangeCreator">
-
+      <h2 slot="content"> example</h2>
   </my-container>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      feedback: null,
+      feedback: {},
       items: undefined
     };
   },

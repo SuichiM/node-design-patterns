@@ -1,32 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-      <router-link to="/">
-        <v-img
-          alt="DPR"
-          class="shrink mr-2"
-          contain
-          src="@/assets/pattern.png"
-          transition="scale-transition"
-          width="40"
-          title="Home"
-        />
-        </router-link>
-
-        <span class="shrink mt-auto hidden-sm-and-down small"> 
-          by: <a href="https://github.com/SuichiM" class="text-white"> SuichiM </a> 
-        </span>
-      </div>
-
-      <v-spacer></v-spacer>
-
-    </v-app-bar>
-
+    <NavBar></NavBar>
     <v-content class="container">
       <router-view/>
     </v-content>
@@ -34,10 +8,13 @@
 </template>
 
 <script>
+import NavBar from './components/Navbar';
 
 export default {
   name: 'App',
-
+  components:{
+    'NavBar': NavBar
+  },
   data: () => ({
     //
   }),

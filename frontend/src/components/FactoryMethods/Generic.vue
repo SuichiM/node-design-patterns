@@ -35,34 +35,31 @@ export default {
   },
   data() {
     return {
-      feedback: null,
+      feedback: {},
       loading: false,
-      items: [
-        { id: "con1", description: "Concrete Creator 1" },
-        { id: "con2", description: "Concrete Creator 2" }
-      ],
-      result: null
+      items: undefined,
+      result: undefined
     };
   },
   methods: {
     async handleChangeCreator(item) {
       this.feedback = {
-        type: "info",
+        status: "info",
         text: "Querying Factory Method"
       };
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/factory-method-generic?type=${item}`);
+        let { data } = await this.$api.get(`/factory-method-generic/${item}`);
         this.result = data;
         this.loading = false;
         this.feedback = {
-          type: "success",
+          status: "success",
           text: "Query Sucessfully!"
         };
       } catch (error) {
         this.feedback = {
-          type: "error",
+          status: "error",
           text: "Ooops! something went wrong!"
         };
         
@@ -70,8 +67,9 @@ export default {
       }
     }
   },
-  mounted(){
-
+  async mounted(){
+    let { data } = await this.$api.get(`/factory-method-generic`);
+    this.items = data;
   }
 };
 </script>

@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <v-snackbar
-      v-model="_feedback.show"
-      :color="_feedback.type"
+      v-model="show"
+      :color="feedback.status"
       :right="true"
       :bottom="true"
       :timeout="1500"
+      @input="handleShow"
     >
-      {{ _feedback.text }}
+      {{ feedback.text }}
     </v-snackbar>
 
     <h6>Example</h6>
@@ -37,18 +38,30 @@
 <script>
 export default {
   props: {
-    feedback: {},
+    feedback: {default: ()=>{}},
     items:{},
-    loading:{}
+    loading:{},
   },
-  computed:{
-    _feedback(){
-        return {...this.feedback, show: true}
-    }  
+  watch:{
+    feedback(){
+      window.console.log(this.feedback);
+      if(Object.keys(this.feedback).length > 0 )
+        this.show = true
+    } 
+  },
+  data(){
+    return {
+      show:false
+    }
   },
   methods:{
       handleChangeSelect(el){
           this.$emit('changeOption', el);
+      }, 
+      handleShow(status){
+        window.console.log('cambio por timeout', status);
+        
+        this.show = status;
       }
   }
 };
