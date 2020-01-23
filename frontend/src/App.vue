@@ -6,6 +6,7 @@
       dark
     >
       <div class="d-flex align-center">
+      <router-link to="/">
         <v-img
           alt="DPR"
           class="shrink mr-2"
@@ -13,10 +14,12 @@
           src="@/assets/pattern.png"
           transition="scale-transition"
           width="40"
+          title="Home"
         />
+        </router-link>
 
-        <span class="shrink mt-1 hidden-sm-and-down h2"> 
-          <a href="https://github.com/SuichiM" class="text-white"> SuichiM </a> 
+        <span class="shrink mt-auto hidden-sm-and-down small"> 
+          by: <a href="https://github.com/SuichiM" class="text-white"> SuichiM </a> 
         </span>
       </div>
 

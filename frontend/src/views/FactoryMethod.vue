@@ -23,7 +23,7 @@
 <script>
 
 import Generic from '@/components/FactoryMethods/Generic';
-
+import Specific from '@/components/FactoryMethods/Specific';
 export default{
     props:{
 
@@ -38,7 +38,9 @@ export default{
                     component: Generic
                 },
                 custom: {
-                    title: 'Specific'
+                    title: 'Specific',
+                    image: 'https://refactoring.guru/images/patterns/diagrams/factory-method/example.png',
+                    component: Specific
                 }
             }
         }

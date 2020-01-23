@@ -1,43 +1,41 @@
 <template>
-  <v-container>
-    <v-snackbar v-model="showSnack" color="info" :absolute="true" :right="true" :timeout="1500">
-      {{ text }}
-      <v-btn text @click="showSnack = false">Close</v-btn>
-    </v-snackbar>
+  <my-container :feedback="feedback" 
+                :items="items"
+                :loading="loading"
+                @changeOption="handleChangeCreator">
 
-    <h6>Example</h6>
-
-    <v-select
-      item-value="id"
-      item-text="description"
-      :items="items"
-      label="Available Creators"
-      @change="handleChangeCreator"
-    ></v-select>
-
-    <v-divider />
-
-    <v-card class="mx-auto" outlined elevation="24" :loading="loading" >
-      <v-list-item three-line v-if="result">
+    <v-card v-if="result" slot="content" class="mx-auto" outlined elevation="24">
+      <v-list-item three-line>
         <v-list-item-content>
-          <v-list-item-title class="headline mb-1">{{result.concreteCreator}}</v-list-item-title>
-          <v-list-item-subtitle class="text--primary">Product Generated: {{result.productGenerated}}</v-list-item-subtitle>
-          <v-list-item-subtitle>{{result.description}}</v-list-item-subtitle>
+          <v-list-item-title class="headline mb-1">
+            <u>Creator:</u>
+            {{result.concreteCreator}}
+          </v-list-item-title>
+          <v-list-item-subtitle class="text--primary">
+            <u>Product Generated:</u>
+            {{result.productGenerated}}
+          </v-list-item-subtitle>
+          <v-list-item-subtitle>
+            <u>Description:</u>
+            {{result.description}}
+          </v-list-item-subtitle>
         </v-list-item-content>
-
       </v-list-item>
     </v-card>
-  </v-container>
+  </my-container>
 </template>
 
 <script>
+import Container from "./Container";
+
 export default {
   name: "FactoryMethodGeneric",
-
+  components: {
+    "my-container": Container
+  },
   data() {
     return {
-      showSnack: false,
-      text: "Querying Factory Method",
+      feedback: null,
       loading: false,
       items: [
         { id: "con1", description: "Concrete Creator 1" },
@@ -47,15 +45,33 @@ export default {
     };
   },
   methods: {
-    handleChangeCreator(item) {
-      this.showSnack = this.loading = true;
-
-      window.console.log("hola", item);
-      this.$api.get(`/factory-method-generic?type=${item}`).then(result => {
-        this.result = result.data;
+    async handleChangeCreator(item) {
+      this.feedback = {
+        type: "info",
+        text: "Querying Factory Method"
+      };
+      this.loading = true;
+      this.result = null;
+      try {
+        let { data } = await this.$api.get(`/factory-method-generic?type=${item}`);
+        this.result = data;
         this.loading = false;
-      });
+        this.feedback = {
+          type: "success",
+          text: "Query Sucessfully!"
+        };
+      } catch (error) {
+        this.feedback = {
+          type: "error",
+          text: "Ooops! something went wrong!"
+        };
+        
+        this.loading = false;
+      }
     }
+  },
+  mounted(){
+
   }
 };
 </script>
