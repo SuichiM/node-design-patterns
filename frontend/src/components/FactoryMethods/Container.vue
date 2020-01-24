@@ -5,7 +5,7 @@
       :color="feedback.status"
       :right="true"
       :bottom="true"
-      :timeout="1500"
+      :timeout="3000"
       @input="handleShow"
     >
       {{ feedback.text }}

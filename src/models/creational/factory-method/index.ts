@@ -1,7 +1,7 @@
-import ConcreteCreator1 from './concreteCreator1';
-import ConcreteCreator2 from './concreteCreator2';
+import ConcreteCreator1 from './generic/concreteCreator1';
+import ConcreteCreator2 from './generic/concreteCreator2';
 
 export default {
-    con1: new ConcreteCreator1,
-    con2: new ConcreteCreator2    
+    creator1: new ConcreteCreator1,
+    creator2: new ConcreteCreator2    
 }

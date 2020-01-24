@@ -11,7 +11,7 @@
             <v-expansion-panel-header><h5>{{item.title}}</h5></v-expansion-panel-header>
 
             <v-expansion-panel-content>         
-                <v-img :src="item.image" max-height="320" contain/>
+                <v-img :src="item.image" max-height="320" contain alt="Factory Method Diagram"/>
                 <component :is="item.component"/>
             </v-expansion-panel-content>
 

@@ -1,13 +1,13 @@
 import App from './app'
 
-import FactoryMethodGenericController from './controllers/FactoryMethodGenericController';
+import FactoryMethodController from './controllers/FactoryMethodController';
 
 const app = new App({ 
     port: 8888, 
     middleWares: [], 
     controllers: [
         
-        new FactoryMethodGenericController(),
+        new FactoryMethodController(),
     ]
 });
 

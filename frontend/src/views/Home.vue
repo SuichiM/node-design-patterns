@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <v-container >
     <h1>
       <a
         href="https://github.com/SuichiM/node-design-patterns"
@@ -65,7 +65,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </v-container >
 </template>
 
 <script>
