@@ -4,7 +4,7 @@ import IButton from './IButton'
 
 export default class WindowsButton implements IButton{
   text:string = "Button";
-  icon:string = 'mdi-microsoft';
+  icon:string = 'mdi-language-html5';
 
   render(onClickHandler){
     var button = {};

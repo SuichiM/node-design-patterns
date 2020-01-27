@@ -4,10 +4,14 @@
  */
 export default interface IButton {
   text:string;
+  icon:string;
 
   render(onClickHandler);
+  
   onClick(f);
 
   getText()
+
+  getIcon()
 }
    

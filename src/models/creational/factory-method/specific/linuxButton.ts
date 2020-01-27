@@ -4,7 +4,7 @@ import IButton from './IButton'
 
 export default class WindowsButton implements IButton{
   text:string = "Button";
-  icon:string = 'mdi-microsoft';
+  icon:string = 'mdi-linux';
 
   render(onClickHandler){
     var button = {};
@@ -25,6 +25,5 @@ export default class WindowsButton implements IButton{
   getIcon(){
     return this.icon;
   }
-
 }
   

@@ -8,7 +8,9 @@
       </v-avatar>
       {{result.title}}
       <template v-slot:actions >
-        <v-btn text color="deep-purple accent-4" @click="handleDialogButtonClick">{{result.button.title}}</v-btn>
+        <v-btn text color="deep-purple accent-4" @click="handleDialogButtonClick">
+          <v-icon left dark>{{result.button.icon}}</v-icon>{{result.button.title}}
+        </v-btn>
       </template>
     </v-banner>
 
