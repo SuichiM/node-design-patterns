@@ -1,14 +1,11 @@
 import App from './app'
 
-import FactoryMethodController from './controllers/FactoryMethodController';
+import Controllers from './controllers'
 
 const app = new App({ 
     port: 8888, 
     middleWares: [], 
-    controllers: [
-        
-        new FactoryMethodController(),
-    ]
+    controllers: Controllers
 });
 
 app.listen();
