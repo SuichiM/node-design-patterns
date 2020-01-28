@@ -1,11 +1,14 @@
 import {IProductA, IProductB} from './IProducts'
 
+// Concrete products are created by corresponding concrete
+// factories.
+
 export class Kind1ProductA implements IProductA{
   someAction(){
-    return 'someAction called on ProductA1'  ;
+    return 'someAction called on ProductA_Kind1'  ;
   }
   otherAction(){
-    return 'otherAction called on ProductA1'  ;
+    return 'otherAction called on ProductA_Kind1'  ;
   }
 }
 

@@ -2,10 +2,10 @@ import * as express from 'express';
 import { Request, Response } from 'express';
 import IControllerBase from './IControllerBase';
 
-/**
- * here imports a list of all the concrete creators 
- */
+
 import GenericFactories from '../models/creational/abstract-factory';
+import IAbstractFactory from '../models/creational/abstract-factory/generic/IAbstractFactory';
+import {IProductA, IProductB} from '../models/creational/abstract-factory/generic/IProducts';
 // import DialogsList from '../models/creational/abstract-factory/index-specific';
 
 export default class FactoryMethodGenericController implements IControllerBase {
@@ -19,7 +19,7 @@ export default class FactoryMethodGenericController implements IControllerBase {
 
     public initRoutes() {
         this.router.get(this.genericPath, this.indexGeneric);
-    //    this.router.get(`${this.genericPath}/:creator`, this.getGenericCreator);
+        this.router.get(`${this.genericPath}/:factory`, this.getGenericFactory);
     //    this.router.get(this.specificPath, this.indexSpecific);
     //    this.router.get(`${this.specificPath}/:creator`, this.getSpecificCreator);
     }
@@ -33,22 +33,35 @@ export default class FactoryMethodGenericController implements IControllerBase {
         res.send(factories);
     }
 
-   /*  getGenericCreator = (req: Request, res: Response) => {
-        var content: any = {};
+    getGenericFactory = (req: Request, res: Response) => {
+        var content: any = {'ProductA':{}, 'ProductB':{}};
+        var myProductA: IProductA;
+        var myProductB: IProductB;
 
-        var creatorSelected = ConcretesCreatorsGeneric[req.params.creator];
+        var factorySelected:IAbstractFactory = GenericFactories[req.params.factory];
 
-        if (creatorSelected) {
-            setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
-            content.concreteCreator = creatorSelected.getName();
-            content.productGenerated = creatorSelected.factoryMethod().getName();
-            content.description = creatorSelected.someOperation();
+        if (factorySelected) {
+            
+            content.factory = factorySelected.getName();
+            // PRODUCT A USE
+            myProductA = factorySelected.createProductA();
+            content.ProductA['someActionResult'] = myProductA.someAction();
+            content.ProductA['otherActionResult'] = myProductA.otherAction();
+            
+            // PRODUCT B USE
+            myProductB = factorySelected.createProductB();
+            content.ProductB['someActionResult'] = myProductB.someAction();
+            content.ProductB['otherActionResult'] = myProductB.otherAction();
+
+            // content.productGenerated = creatorSelected.factoryMethod().getName();
+            // content.description = creatorSelected.someOperation();
+            res.send(content);
 
         } else {
-            res.status(500).send("Concrete Creator Non Supported");
+            res.status(500).send("Factory Non Supported");
         }
     }
-
+/* 
     indexSpecific = (req:Request, res: Response) =>{
         let creatorsList = Object
             .keys(DialogsList)
