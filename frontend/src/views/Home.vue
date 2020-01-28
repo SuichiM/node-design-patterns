@@ -1,5 +1,5 @@
 <template>
-  <v-container >
+  <v-container>
     <h1>
       <a
         href="https://github.com/SuichiM/node-design-patterns"
@@ -8,8 +8,12 @@
     <p>
       In this repository there are implemented some of the most important GoF design patterns.
       following the greaaaat book, site and examples of
-      <a href="https://refactoring.guru/">Alexander Shvets</a> and using as initial repository a forked copy of:
-      <a href="https://github.com/adoi/node-design-patterns">Adonis Murati.</a>
+      <a
+        href="https://refactoring.guru/"
+      >Alexander Shvets</a> and using as initial repository a forked copy of:
+      <a
+        href="https://github.com/adoi/node-design-patterns"
+      >Adonis Murati.</a>
     </p>
 
     <blockquote class="blockquote text-center">
@@ -28,50 +32,48 @@
       The following have been implemented in this repo:
     </p>
     <div class="container">
-      <table class="table table-sm">
-        <thead>
-          <tr>
-            <th scope="col">Creational</th>
-            <th scope="col">Structural</th>
-            <th scope="col">Behavioral</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <v-btn  text to="/factory-method">
-                Factory Method<v-icon color="primary">mdi-chevron-right</v-icon>
-              </v-btn>
+      <v-skeleton-loader v-if="loading" class="mx-auto" max-width="300" type="card"></v-skeleton-loader>
+            
+      <v-data-iterator v-else :items="items" hide-default-footer>
+        <template v-slot:default="props">
+          <v-row>
+            <v-col v-for="item in props.items" :key="item.id" cols="12" sm="6" md="4" lg="3">
+              <v-card>
+                <v-card-title class="subheading font-weight-bold">{{ item.name }}</v-card-title>
 
-            </td>
-            <td>Proxy</td>
-            <td>Observer</td>
-          </tr>
-          <tr>
-            <td>Factory</td>
-            <td>Adapter</td>
-            <td>Strategy</td>
-          </tr>
-          <tr>
-            <td>Singleton</td>
-            <td>Decorator</td>
-            <td>Iterator</td>
-          </tr>
-          <tr>
-            <td>Prototype</td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+                <v-divider></v-divider>
+
+                <v-list dense v-for="pattern in item.patterns" :key="pattern.id">
+                  <v-list-item :to="pattern.route">
+                    <v-list-item-content>{{pattern.name}}</v-list-item-content>
+                    <v-icon color="primary" left>mdi-chevron-right</v-icon>
+                  </v-list-item>
+                </v-list>
+              </v-card>
+            </v-col>
+          </v-row>
+        </template>
+      </v-data-iterator>
     </div>
-  </v-container >
+  </v-container>
 </template>
 
 <script>
 export default {
   name: "Home",
-  props: {}
+  props: {},
+  data() {
+    return {
+      items: [],
+      loading: false
+    };
+  },
+  async beforeMount() {
+    this.loading = true;
+    let { data } = await this.$api.get(`/catalog`);
+    this.items = data;
+    this.loading = false;
+  }
 };
 </script>
 

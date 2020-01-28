@@ -55,9 +55,7 @@ class App {
         this.app.get('/', (req, res) => {
             res.status(200).send({
                 success: 'true',
-                message: {
-                    'factory-method': 'http://localhost:8888/factory-method-generic'
-                },
+                message: {},
                 version: '1.0.0',
             });
         });
