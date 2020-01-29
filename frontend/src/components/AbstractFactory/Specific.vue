@@ -1,8 +1,7 @@
 <template>
   <my-container :feedback="feedback" 
                 :items="items" 
-                :itemsLabel="selectLabel"
-                @changeOption="handleChangeCreator">
+                :itemsLabel="selectLabel" @changeOption="handleChangeCreator">
     
     <v-banner two-line slot="content" v-if="result">
       
@@ -21,12 +20,13 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       feedback: {},
       items: undefined,
-      selectLabel: 'Available Creators',
+      selectLabel: 'Available Factories',
       result: null
     };
   },

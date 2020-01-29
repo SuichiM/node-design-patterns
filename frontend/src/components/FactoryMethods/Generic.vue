@@ -1,6 +1,7 @@
 <template>
   <my-container :feedback="feedback" 
                 :items="items"
+                :itemsLabel="selectLabel"
                 :loading="loading"
                 @changeOption="handleChangeCreator">
 
@@ -26,18 +27,15 @@
 </template>
 
 <script>
-import Container from "./Container";
-
 export default {
   name: "FactoryMethodGeneric",
-  components: {
-    "my-container": Container
-  },
+  
   data() {
     return {
       feedback: {},
       loading: false,
       items: undefined,
+      selectLabel: 'Available Creators',
       result: undefined
     };
   },

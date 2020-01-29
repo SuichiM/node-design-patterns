@@ -3,11 +3,13 @@
 // interface.
 
 export interface IProductB {
+  getName():string
   someAction():string
   otherAction():string
 }
 
 export interface IProductA {
+  getName():string
   someAction():string
   otherAction():string
 }

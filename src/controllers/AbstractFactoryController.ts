@@ -4,6 +4,7 @@ import IControllerBase from './IControllerBase';
 
 
 import GenericFactories from '../models/creational/abstract-factory';
+
 import IAbstractFactory from '../models/creational/abstract-factory/generic/IAbstractFactory';
 import {IProductA, IProductB} from '../models/creational/abstract-factory/generic/IProducts';
 // import DialogsList from '../models/creational/abstract-factory/index-specific';
@@ -34,27 +35,35 @@ export default class FactoryMethodGenericController implements IControllerBase {
     }
 
     getGenericFactory = (req: Request, res: Response) => {
-        var content: any = {'ProductA':{}, 'ProductB':{}};
+        var content: any = {products:[]};
         var myProductA: IProductA;
         var myProductB: IProductB;
 
         var factorySelected:IAbstractFactory = GenericFactories[req.params.factory];
 
         if (factorySelected) {
-            
+            let productAStringified = {};
+            let productBStringified = {};
             content.factory = factorySelected.getName();
             // PRODUCT A USE
             myProductA = factorySelected.createProductA();
-            content.ProductA['someActionResult'] = myProductA.someAction();
-            content.ProductA['otherActionResult'] = myProductA.otherAction();
+
+            productAStringified['name'] = myProductA.getName();
+            productAStringified['someActionResult'] = myProductA.someAction();
+            productAStringified['otherActionResult'] = myProductA.otherAction();
             
             // PRODUCT B USE
             myProductB = factorySelected.createProductB();
-            content.ProductB['someActionResult'] = myProductB.someAction();
-            content.ProductB['otherActionResult'] = myProductB.otherAction();
+            
+            productBStringified['name'] = myProductB.getName();
+            productBStringified['someActionResult'] = myProductB.someAction();
+            productBStringified['otherActionResult'] = myProductB.otherAction();
 
             // content.productGenerated = creatorSelected.factoryMethod().getName();
             // content.description = creatorSelected.someOperation();
+            content.products.push(productAStringified);
+            content.products.push(productBStringified);
+
             res.send(content);
 
         } else {
