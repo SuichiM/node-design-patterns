@@ -6,7 +6,7 @@ import IProduct from './Iproduct';
  * object of a Product class. The Creator's subclasses usually provide the
  * implementation of this method.
  */
-export abstract class Creator {
+export default abstract class Creator {
     protected name:String;
 
     /**
