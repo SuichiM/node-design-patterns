@@ -50,10 +50,11 @@
 
 <script>
 export default {
-  name: "FactoryMethodGeneric",
+  name: "AbstractFactoryGeneric",
   data() {
     return {
       feedback: {},
+      baseUrl:'/abstract-factory-generic',
       loading: false,
       items: undefined,
       selectLabel: "Available Factories",
@@ -64,12 +65,12 @@ export default {
     async handleChangeCreator(item) {
       this.feedback = {
         status: "info",
-        text: "Querying Factory Method"
+        text: "Querying Abstract Factory"
       };
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/abstract-factory-generic/${item}`);
+        let { data } = await this.$api.get(`${this.baseUrl}/${item}`);
         this.result = data;
         this.loading = false;
         this.feedback = {
@@ -87,7 +88,7 @@ export default {
     }
   },
   async mounted() {
-    let { data } = await this.$api.get(`/abstract-factory-generic`);
+    let { data } = await this.$api.get(this.baseUrl);
     this.items = data;
   }
 };

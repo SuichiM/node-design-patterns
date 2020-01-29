@@ -27,6 +27,7 @@ export default {
       feedback: {},
       items: undefined,
       selectLabel: 'Available Creators',
+      baseUrl: '/factory-method-specific',
       result: null
     };
   },
@@ -39,7 +40,7 @@ export default {
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/factory-method-specific/${item}`);
+        let { data } = await this.$api.get(`${this.baseUrl}/${item}`);
         this.result = data.dialog;
         this.loading = false;
         this.feedback = {
@@ -60,7 +61,7 @@ export default {
     }
   },
   async mounted() {
-    let { data } = await this.$api.get(`/factory-method-specific`);
+    let { data } = await this.$api.get(this.baseUrl);
     this.items = data;
   }
 };

@@ -5,11 +5,13 @@
 export interface IProductB {
   getName():string
   someAction():string
-  otherAction():string
+  otherAction():string,
+  toString():object
 }
 
 export interface IProductA {
   getName():string
   someAction():string
   otherAction():string
+  toString():object
 }

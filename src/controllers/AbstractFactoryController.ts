@@ -4,15 +4,17 @@ import IControllerBase from './IControllerBase';
 
 
 import GenericFactories from '../models/creational/abstract-factory';
-
 import IAbstractFactory from '../models/creational/abstract-factory/generic/IAbstractFactory';
 import {IProductA, IProductB} from '../models/creational/abstract-factory/generic/IProducts';
-// import DialogsList from '../models/creational/abstract-factory/index-specific';
+
+import FactoriesList from '../models/creational/abstract-factory/index-specific';
+import IControlsFactory from '../models/creational/abstract-factory/specific/IControlsFactory';
+import {IButton, ITextbox} from '../models/creational/abstract-factory/specific/IControls';
 
 export default class FactoryMethodGenericController implements IControllerBase {
-    public genericPath = '/abstract-factory-generic';
-    public specificPath = '/abstract-factory-specific'
-    public router = express.Router()
+    public genericPath:string  = '/abstract-factory-generic';
+    public specificPath:string = '/abstract-factory-specific';
+    public router = express.Router();
 
     constructor() {
         this.initRoutes()
@@ -21,8 +23,8 @@ export default class FactoryMethodGenericController implements IControllerBase {
     public initRoutes() {
         this.router.get(this.genericPath, this.indexGeneric);
         this.router.get(`${this.genericPath}/:factory`, this.getGenericFactory);
-    //    this.router.get(this.specificPath, this.indexSpecific);
-    //    this.router.get(`${this.specificPath}/:creator`, this.getSpecificCreator);
+        this.router.get(this.specificPath, this.indexSpecific);
+        this.router.get(`${this.specificPath}/:creator`, this.getSpecificCreator);
     }
 
     indexGeneric = (req: Request, res: Response) => {
@@ -38,61 +40,70 @@ export default class FactoryMethodGenericController implements IControllerBase {
         var content: any = {products:[]};
         var myProductA: IProductA;
         var myProductB: IProductB;
+        let productAStringified = {};
+        let productBStringified = {};
 
         var factorySelected:IAbstractFactory = GenericFactories[req.params.factory];
 
-        if (factorySelected) {
-            let productAStringified = {};
-            let productBStringified = {};
-            content.factory = factorySelected.getName();
-            // PRODUCT A USE
-            myProductA = factorySelected.createProductA();
+        if (! factorySelected)
+         return res.status(500).send("Factory Non Supported");
+        
+        
+        content.factory = factorySelected.getName();
+        
+        // PRODUCT A USE
+        myProductA = factorySelected.createProductA();
+        myProductB = factorySelected.createProductB();        
 
-            productAStringified['name'] = myProductA.getName();
-            productAStringified['someActionResult'] = myProductA.someAction();
-            productAStringified['otherActionResult'] = myProductA.otherAction();
-            
-            // PRODUCT B USE
-            myProductB = factorySelected.createProductB();
-            
-            productBStringified['name'] = myProductB.getName();
-            productBStringified['someActionResult'] = myProductB.someAction();
-            productBStringified['otherActionResult'] = myProductB.otherAction();
+        // PRODUCT B USE
+        productAStringified = myProductA.toString();
+        productBStringified = myProductB.toString();
+        
+        // content.productGenerated = creatorSelected.factoryMethod().getName();
+        // content.description = creatorSelected.someOperation();
+        content.products.push(productAStringified);
+        content.products.push(productBStringified);
 
-            // content.productGenerated = creatorSelected.factoryMethod().getName();
-            // content.description = creatorSelected.someOperation();
-            content.products.push(productAStringified);
-            content.products.push(productBStringified);
+        res.send(content);
 
-            res.send(content);
-
-        } else {
-            res.status(500).send("Factory Non Supported");
-        }
+       
     }
-/* 
+
+
     indexSpecific = (req:Request, res: Response) =>{
         let creatorsList = Object
-            .keys(DialogsList)
-            .map((k) => { return { id: k, description: DialogsList[k].getName() } })
+            .keys(FactoriesList)
+            .map((k) => { return { id: k, description: FactoriesList[k].getName() } })
             .reduce((prev, el) => [...prev, el], [])
 
         res.send(creatorsList);
     }
 
     getSpecificCreator = (req: Request, res: Response) => {
-        var content: any = {};
+        var content: any = {controls:{}};
 
-        var dialogSelected = DialogsList[req.params.creator];
+        var factorySelected:IControlsFactory = FactoriesList[req.params.creator];
+        var myButton: IButton;
+        var myTextbox: ITextbox;
+        let myButtonStringified = {};
+        let myTextboxStringified = {};
 
-        if (dialogSelected) {
-            setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
-            content.dialog = dialogSelected.render();
+        if (! factorySelected) 
+            return res.status(500).send("Concrete Creator Non Supported");
+        
+        content.factory = factorySelected.getName();
 
-        } else {
-            res.status(500).send("Concrete Creator Non Supported");
-        }
+        myButton = factorySelected.createButton();
+        myTextbox = factorySelected.createTextbox();
+
+        myButtonStringified = myButton.toString();
+        myTextboxStringified = myTextbox.toString();
+        
+        content.controls.button = myButtonStringified;
+        content.controls.textbox = myTextboxStringified;
+
+        setTimeout(()=>{res.send(content)}, 1500)
     }
- */
+
 }
 

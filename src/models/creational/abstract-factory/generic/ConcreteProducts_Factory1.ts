@@ -13,6 +13,14 @@ export class ConcreteProductA_Factory1 implements IProductA{
   otherAction(){
     return 'otherAction called on ProductA_Kind1'  ;
   }
+
+  toString(){
+    return {
+      'name':      this.getName(),
+      'someAction': this.someAction(),
+      'otherAction': this.otherAction()
+    }
+  }
 }
 
 export class ConcreteProductB_Factory1 implements IProductB{
@@ -24,5 +32,12 @@ export class ConcreteProductB_Factory1 implements IProductB{
   }
   otherAction(){
     return 'otherAction called on ProductB_Kind1'  ;
+  }
+  toString(){
+    return {
+      'name':      this.getName(),
+      'someAction': this.someAction(),
+      'otherAction': this.otherAction()
+    }
   }
 }

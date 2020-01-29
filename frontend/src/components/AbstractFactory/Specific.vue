@@ -1,46 +1,54 @@
 <template>
-  <my-container :feedback="feedback" 
-                :items="items" 
-                :itemsLabel="selectLabel" @changeOption="handleChangeCreator">
-    
-    <v-banner two-line slot="content" v-if="result">
+  <my-container
+    :feedback="feedback"
+    :items="items"
+    :itemsLabel="selectLabel"
+    :loading="loading"
+    @changeOption="handleChangeCreator"
+  >
+    <v-card v-if="result" slot="content" class="mx-auto" outlined elevation="24">
       
-      <v-avatar slot="icon" color="deep-purple accent-4" size="40">
-        <v-icon :icon="result.icon" color="white">{{result.icon}}</v-icon>
-      </v-avatar>
-      {{result.title}}
-      <template v-slot:actions >
-        <v-btn text color="deep-purple accent-4" @click="handleDialogButtonClick">
-          <v-icon left dark>{{result.button.icon}}</v-icon>{{result.button.title}}
-        </v-btn>
-      </template>
-    </v-banner>
+        <v-card-title small> <u>Factory:</u> {{result.factory}} </v-card-title>
+       
+          <v-divider></v-divider>
 
+            <v-skeleton-loader v-if="loading" class="mx-2 d-inline-block" max-width="300" type="card"></v-skeleton-loader>
+
+            <v-card v-else v-for="(control, idx) in result.controls" :key="idx" small class="mx-2 d-inline-block" outlined >
+              <v-card-title small>{{ idx }}</v-card-title>
+
+              <v-divider></v-divider>
+              <input color="primary" :type="control.type" :value="control.text" :placeholder="control.placeholder" :style="control.style"/>
+            </v-card>
+
+    </v-card>
   </my-container>
 </template>
 
 <script>
-
 export default {
+  name: "AbstractFactorySpecific",
   data() {
     return {
+      baseUrl: "/abstract-factory-specific",
       feedback: {},
       items: undefined,
-      selectLabel: 'Available Factories',
-      result: null
+      selectLabel: "Available Factories",
+      result: null,
+      loading: false
     };
   },
   methods: {
     async handleChangeCreator(item) {
       this.feedback = {
         status: "info",
-        text: "Querying Factory Method"
+        text: "Querying Abstract Factory"
       };
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/factory-method-specific/${item}`);
-        this.result = data.dialog;
+        let { data } = await this.$api.get(`${this.baseUrl}/${item}`);
+        this.result = data;
         this.loading = false;
         this.feedback = {
           status: "success",
@@ -54,13 +62,10 @@ export default {
 
         this.loading = false;
       }
-    },
-    handleDialogButtonClick(){
-      window.alert(`${this.result.button.onClick}`);
     }
   },
   async mounted() {
-    let { data } = await this.$api.get(`/factory-method-specific`);
+    let { data } = await this.$api.get(this.baseUrl);
     this.items = data;
   }
 };
