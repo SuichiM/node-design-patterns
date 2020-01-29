@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8889",
+    "serve": "vue-cli-service serve --port 80",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -44,6 +44,5 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "port": 8889
+  ]
 }
