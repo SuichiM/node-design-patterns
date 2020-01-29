@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home                 from   './views/Home.vue'
 import FactoryMethod        from  './views/FactoryMethod.vue'
+import AbstractFactory      from './views/AbstractFactory.vue'
 import UnderConstruction    from './views/UnderConstruction.vue'
 
 /*import Home from    './views/Home.vue'
@@ -25,11 +26,11 @@ const router = new Router({
     name: 'factoryMethod',
     component: FactoryMethod
   },
-  /* , {
-    path: '/signup',
-    component: Signup
+  {
+    path: '/abstract-factory',
+    component: AbstractFactory
   },
-   
+  /* 
   {
     path: '/articles/create',
     component: CreateArticle,

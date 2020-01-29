@@ -5,6 +5,8 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 import axios from 'axios'
 
+import './globalComponents';
+
 const apiClient = axios.create({
   baseURL: 'http://localhost:8888/',
   timeout: 3000,

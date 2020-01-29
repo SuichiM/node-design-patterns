@@ -1,23 +1,14 @@
 <template>
   <v-container>
-    <v-snackbar
-      v-model="show"
-      :color="feedback.status"
-      :right="true"
-      :bottom="true"
-      :timeout="3000"
-      @input="handleShow"
+    <v-snackbar v-model="show" :color="feedback.status" :right="true"
+      :bottom="true" :timeout="3000" @input="handleShow"
     >
       {{ feedback.text }}
     </v-snackbar>
 
     <h6>Example</h6>
 
-    <v-select
-      item-value="id"
-      item-text="description"
-      :items="items"
-      label="Available Creators"
+    <v-select item-value="id" item-text="description" :items="items" :label="itemsLabel"
       @change="handleChangeSelect"
     ></v-select>
 
@@ -41,10 +32,10 @@ export default {
     feedback: {default: ()=>{}},
     items:{},
     loading:{},
+    itemsLabel:{}
   },
   watch:{
     feedback(){
-      window.console.log(this.feedback);
       if(Object.keys(this.feedback).length > 0 )
         this.show = true
     } 

@@ -25,6 +25,15 @@ export default class HomeController implements IControllerBase {
       { id: "ada", name: "Adapter*", route: "/adapter" },
       { id: "dec", name: "Decorator*", route: "/decorator" }
     ]
+  },
+  {
+    id: "behavioral",
+    name: "Behavioral",
+    patterns: [
+      { id: "obs", name: "Strategy*", route: "/obsever" },
+      { id: "str", name: "Observer*", route: "/strategy" },
+      { id: "ite", name: "Iterator*", route: "/iterator" }
+    ]
   }];
 
   constructor() {

@@ -8,6 +8,9 @@ import IControllerBase from './IControllerBase';
 import ConcretesCreatorsGeneric from '../models/creational/factory-method';
 import DialogsList from '../models/creational/factory-method/index-specific';
 
+import GenericCreator from '../models/creational/factory-method/generic/creator';
+import GenericDialog from '../models/creational/factory-method/specific/dialog';
+
 export default class FactoryMethodGenericController implements IControllerBase {
     public genericPath = '/factory-method-generic';
     public specificPath = '/factory-method-specific'
@@ -36,8 +39,8 @@ export default class FactoryMethodGenericController implements IControllerBase {
     getGenericCreator = (req: Request, res: Response) => {
         var content: any = {};
 
-        var creatorSelected = ConcretesCreatorsGeneric[req.params.creator];
-
+        var creatorSelected:GenericCreator = ConcretesCreatorsGeneric[req.params.creator];
+        
         if (creatorSelected) {
             setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
             content.concreteCreator = creatorSelected.getName();
@@ -61,8 +64,8 @@ export default class FactoryMethodGenericController implements IControllerBase {
     getSpecificCreator = (req: Request, res: Response) => {
         var content: any = {};
 
-        var dialogSelected = DialogsList[req.params.creator];
-
+        var dialogSelected:GenericDialog = DialogsList[req.params.creator];
+        
         if (dialogSelected) {
             setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
             content.dialog = dialogSelected.render();

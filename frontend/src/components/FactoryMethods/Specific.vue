@@ -1,5 +1,8 @@
 <template>
-  <my-container :feedback="feedback" :items="items" @changeOption="handleChangeCreator">
+  <my-container :feedback="feedback" 
+                :items="items" 
+                :itemsLabel="selectLabel"
+                @changeOption="handleChangeCreator">
     
     <v-banner two-line slot="content" v-if="result">
       
@@ -18,16 +21,13 @@
 </template>
 
 <script>
-import Container from "./Container";
-
 export default {
-  components: {
-    "my-container": Container
-  },
   data() {
     return {
       feedback: {},
       items: undefined,
+      selectLabel: 'Available Creators',
+      baseUrl: '/factory-method-specific',
       result: null
     };
   },
@@ -40,7 +40,7 @@ export default {
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/factory-method-specific/${item}`);
+        let { data } = await this.$api.get(`${this.baseUrl}/${item}`);
         this.result = data.dialog;
         this.loading = false;
         this.feedback = {
@@ -61,7 +61,7 @@ export default {
     }
   },
   async mounted() {
-    let { data } = await this.$api.get(`/factory-method-specific`);
+    let { data } = await this.$api.get(this.baseUrl);
     this.items = data;
   }
 };

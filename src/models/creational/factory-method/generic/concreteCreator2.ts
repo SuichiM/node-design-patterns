@@ -1,5 +1,5 @@
 
-import {Creator}        from './creator';
+import Creator        from './creator';
 import ConcreteProduct2 from './concreteProduct2';
 
 /**

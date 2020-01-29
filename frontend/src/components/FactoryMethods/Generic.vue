@@ -1,6 +1,7 @@
 <template>
   <my-container :feedback="feedback" 
                 :items="items"
+                :itemsLabel="selectLabel"
                 :loading="loading"
                 @changeOption="handleChangeCreator">
 
@@ -26,18 +27,16 @@
 </template>
 
 <script>
-import Container from "./Container";
-
 export default {
   name: "FactoryMethodGeneric",
-  components: {
-    "my-container": Container
-  },
+  
   data() {
     return {
       feedback: {},
       loading: false,
       items: undefined,
+      selectLabel: 'Available Creators',
+      baseUrl: '/factory-method-generic',
       result: undefined
     };
   },
@@ -50,7 +49,7 @@ export default {
       this.loading = true;
       this.result = null;
       try {
-        let { data } = await this.$api.get(`/factory-method-generic/${item}`);
+        let { data } = await this.$api.get(`${this.baseUrl}/${item}`);
         this.result = data;
         this.loading = false;
         this.feedback = {
@@ -68,7 +67,7 @@ export default {
     }
   },
   async mounted(){
-    let { data } = await this.$api.get(`/factory-method-generic`);
+    let { data } = await this.$api.get(this.baseUrl);
     this.items = data;
   }
 };
