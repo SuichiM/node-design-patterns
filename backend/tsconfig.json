@@ -4,10 +4,10 @@
       "target": "es6",
       "module": "commonjs",
       "outDir": "./dist",
-      "baseUrl": "./src"
+      "baseUrl": "backend/dist/src"
   },
   "include": [
-      "src/**/*.ts"
+      "backend/dist/src/**/*.ts"
   ],
   "exclude": [
       "node_modules"

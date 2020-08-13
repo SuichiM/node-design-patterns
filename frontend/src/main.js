@@ -7,8 +7,10 @@ import axios from 'axios'
 
 import './globalComponents';
 
+const backendUrl = process.env.BACKEND_URL || 'http://localhost:8888/'
+
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8888/',
+  baseURL: backendUrl,
   timeout: 3000,
   // headers: {'X-Custom-Header': 'foobar'}
 });

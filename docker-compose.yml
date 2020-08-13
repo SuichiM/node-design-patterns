@@ -1,13 +1,23 @@
 version: "3"
 services:
-  web:
-    build: .
+  backend:
+    build:
+      context: backend
     volumes:
-      - .:/home/node/app
+      - ./backend:/home/node/app
       - /home/node/app/node_modules
     ports:
       - 8888:8888
-      - 8889:80
     environment:
-        - COMMAND=${COMMAND}
-        - PORT=${BACKEND_PORT}
+      - COMMAND=${BACKEND_COMMAND}
+  frontend:
+    build:
+        context: frontend
+    volumes:
+        - ./frontend:/home/node/app
+        - /home/node/app/node_modules
+    ports:
+        - 8889:80
+    environment:
+        - COMMAND=${FRONTEND_COMMAND}
+        - BACKEND_URL=${BACKEND_URL}
