@@ -1,24 +1,20 @@
 # specify the node base image with your desired version node:<version>
-FROM node:lts
+FROM node:lts-alpine
 
-# replace this with your application's default port
 ENV PORT 8888
+EXPOSE $PORT
 
-EXPOSE 8888
+ARG COMMAND
+ENV COMMAND $COMMAND
 
 WORKDIR /home/node/app
-
-RUN npm install --save -g typescript
-RUN npm install --save -g ts-node
-RUN npm install -g @vue/cli
 
 COPY package.json package.json
 RUN npm install
 
 COPY . .
 
-# RUN npm update --save-dev @types/node
-
 # RUN npm run build
+RUN echo $COMMAND
 
-CMD ["npm", "run", "dev"]
+CMD npm run $COMMAND

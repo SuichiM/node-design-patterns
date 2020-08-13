@@ -1,15 +1,13 @@
-version: '3'
+version: "3"
 services:
-    web:
-        build: .
-        volumes:
-            - .:/home/node/app
-            - /home/node/app/node_modules
-        expose:
-            - 8890
-            - 8888
-            - 80
-        ports:
-            - 8888:8888
-            - 8889:80
-            - 8890:8890
+  web:
+    build: .
+    volumes:
+      - .:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - 8888:8888
+      - 8889:80
+    environment:
+        - COMMAND=${COMMAND}
+        - PORT=${BACKEND_PORT}
