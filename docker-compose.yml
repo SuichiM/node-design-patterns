@@ -7,7 +7,7 @@ services:
       - ./backend:/home/node/app
       - /home/node/app/node_modules
     ports:
-      - 8888:8888
+      - 8888:80
     environment:
       - COMMAND=${BACKEND_COMMAND}
   frontend:

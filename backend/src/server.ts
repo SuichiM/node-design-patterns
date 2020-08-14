@@ -3,7 +3,7 @@ import App from './app'
 import Controllers from './controllers'
 
 const app = new App({ 
-    port: 8888, 
+    port: 80, 
     middleWares: [], 
     controllers: Controllers
 });

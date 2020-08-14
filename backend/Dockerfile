@@ -1,7 +1,7 @@
 # specify the node base image with your desired version node:<version>
 FROM node:lts-alpine
 
-ENV PORT 8888
+ENV PORT 80
 EXPOSE $PORT
 
 ARG COMMAND
