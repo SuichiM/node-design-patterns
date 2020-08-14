@@ -14,7 +14,10 @@ git:
 before_install:
   - cd backend/
 
-script:
+install:
+  - yarn install
+
+  script:
   - yarn test
 
 notifications:
