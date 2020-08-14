@@ -16,6 +16,7 @@ before_install:
 
 install:
   - npm install
+  - npm tsc
 
 script:
   - yarn test

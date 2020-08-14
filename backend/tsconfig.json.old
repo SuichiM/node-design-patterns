@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+      "sourceMap": true,
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "baseUrl": "backend/dist/src"
+  },
+  "include": [
+      "backend/dist/src/**/*.ts"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}
