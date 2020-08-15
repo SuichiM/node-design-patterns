@@ -21,7 +21,7 @@ script:
   - yarn test
 
 script:
-  - npm run start
+  - npm run tsc --noImplicitAny false
   
 notifications:
   email:
