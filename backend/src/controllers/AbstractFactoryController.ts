@@ -29,9 +29,9 @@ export default class FactoryMethodGenericController implements IControllerBase {
 
     indexGeneric = (req: Request, res: Response) => {
         let factories = Object
-            .keys(GenericFactories)
-            .map((k) => { return { id: k, description: GenericFactories[k].getName() } })
-            .reduce((prev, el) => [...prev, el], [])
+            .entries(GenericFactories)
+            .map(([k, el]) => { return { id: k, description: el.getName() } })
+            .reduce((prev, el) =>{prev.push(el); return prev}, [] as  any)
 
         res.send(factories);
     }
@@ -43,7 +43,8 @@ export default class FactoryMethodGenericController implements IControllerBase {
         let productAStringified = {};
         let productBStringified = {};
 
-        var factorySelected:IAbstractFactory = GenericFactories[req.params.factory];
+        const {params:{factory}} = req;
+        var factorySelected:IAbstractFactory = GenericFactories[factory];
 
         if (! factorySelected)
          return res.status(500).send("Factory Non Supported");
@@ -72,9 +73,9 @@ export default class FactoryMethodGenericController implements IControllerBase {
 
     indexSpecific = (req:Request, res: Response) =>{
         let creatorsList = Object
-            .keys(FactoriesList)
-            .map((k) => { return { id: k, description: FactoriesList[k].getName() } })
-            .reduce((prev, el) => [...prev, el], [])
+            .entries(FactoriesList)
+            .map(([k, el]) => { return { id: k, description: el.getName() } })
+            .reduce((prev, el) => [...prev, el], [] as  any)
 
         res.send(creatorsList);
     }

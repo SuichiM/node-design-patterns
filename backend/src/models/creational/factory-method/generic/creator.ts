@@ -7,7 +7,7 @@ import IProduct from './Iproduct';
  * implementation of this method.
  */
 export default abstract class Creator {
-    protected name:String;
+    protected name:string = 'default name';
 
     /**
      * Note that the Creator may also provide some default implementation of the
@@ -20,6 +20,7 @@ export default abstract class Creator {
     getName(){
         return this.name;
     }
+
     /**
      * Also note that, despite its name, the Creator's primary responsibility is
      * not creating products. Usually, it contains some core business logic that

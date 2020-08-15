@@ -31,7 +31,7 @@ export default class FactoryMethodGenericController implements IControllerBase {
         let creatorsList = Object
             .keys(ConcretesCreatorsGeneric)
             .map((k) => { return { id: k, description: ConcretesCreatorsGeneric[k]['name'] } })
-            .reduce((prev, el) => [...prev, el], [])
+            .reduce((prev, el) => [...prev, el], [] as any)
 
         res.send(creatorsList);
     }
@@ -39,7 +39,9 @@ export default class FactoryMethodGenericController implements IControllerBase {
     getGenericCreator = (req: Request, res: Response) => {
         var content: any = {};
 
-        var creatorSelected:GenericCreator = ConcretesCreatorsGeneric[req.params.creator];
+        const {params:{creator}} = req;
+
+        var creatorSelected:GenericCreator = ConcretesCreatorsGeneric[creator];
         
         if (creatorSelected) {
             setTimeout(() => { console.log('awaiting...'); res.send(content); }, 1200);
@@ -56,7 +58,7 @@ export default class FactoryMethodGenericController implements IControllerBase {
         let creatorsList = Object
             .keys(DialogsList)
             .map((k) => { return { id: k, description: DialogsList[k].getName() } })
-            .reduce((prev, el) => [...prev, el], [])
+            .reduce((prev, el) => [...prev, el], [] as any)
 
         res.send(creatorsList);
     }
