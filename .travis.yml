@@ -20,6 +20,9 @@ install:
 script:
   - yarn test
 
+script:
+  - npm run start
+  
 notifications:
   email:
     reciepients:
@@ -31,6 +34,7 @@ deploy:
   provide: heroku
   skip-cleanup: true
   keep-history: true
+  local_dir: dist/
   api_key: $HEROKU_API_KEY # desde heroku
   app: backend-node-design-patterns  
   on:
