@@ -12,7 +12,7 @@
     "lint": "eslint src --ext js",
     "tsc":"tsc",
     "build": "tsc --noImplicitAny false",
-    "start": "node dist/server.js",
+    "start": "tsc --noImplicitAny false && node dist/server.js",
     "prod": "tsc --noImplicitAny false && node dist/server.js"
   },
   "keywords": [
