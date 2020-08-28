@@ -8,7 +8,7 @@ class App {
 
     constructor(appInit: { port: number; middleWares: any; controllers: any; }) {
         this.app = express()
-        this.port = appInit.port
+        this.port = appInit.port || 3000
         
         this.app.use(function(req, res, next) {
             console.log('allowing CORS');
