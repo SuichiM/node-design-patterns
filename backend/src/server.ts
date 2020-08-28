@@ -2,7 +2,7 @@ import App from './app'
 
 import Controllers from './controllers'
 
-const port:number = Number.parseInt(process.env.PORT)  || 3000;
+const port = process.env.PORT  || 8080;
 
 const app = new App({ 
     port, 
