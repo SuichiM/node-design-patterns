@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import './globalComponents';
 
-const backendUrl = process.env.BACKEND_URL || 'http://localhost:8888/'
+const backendUrl = process.env.VUE_APP_BACKEND_URL || 'http://localhost:8888'
 
 const apiClient = axios.create({
   baseURL: backendUrl,
